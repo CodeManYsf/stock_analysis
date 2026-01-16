@@ -21,18 +21,9 @@ def analyze_stock_strategy():
     df = pd.DataFrame(prices, columns=['close'])
     
     # 调用算法
-    df['rsi'] = calculate_rsi(df['close'], periods=6)
-    
-    # 输出最后时刻的信号
-    current_rsi = df['rsi'].iloc[-1]
-    print(f"📊 当前 RSI(6) 指标: {current_rsi:.2f}")
-    
-    if current_rsi > 80:
-        print("🚨 警告: 超买信号触发! (RSI > 80) -> 建议减仓")
-    elif current_rsi < 20:
-        print("💎 机会: 超卖信号触发! (RSI < 20) -> 建议底仓吸筹")
-    else:
-        print("⚖️ 状态: 震荡观望中...")
+    df['rsi'] = calc
+	# TODO: Save results to csv
+	print("Saving data...")
 
 if __name__ == "__main__":
     analyze_stock_strategy()
